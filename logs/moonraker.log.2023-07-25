@@ -1,0 +1,490 @@
+-------------------- Log Start | Mon Jul 24 23:06:26 2023 --------------------
+data_path: /home/dietpi/printer_data
+is_default_data_path: False
+config_file: /home/dietpi/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: False
+instance_uuid: 1f5d65d8a6e34c419413da9abcc0a6ce
+software_version: v0.8.0-115-gfdc3e0e
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/dietpi/printer_data/logs/moonraker.log
+python_version: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+klippy_uds_address = /home/dietpi/printer_data/comms/klippy.sock
+
+[authorization]
+trusted_clients = 
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+cors_domains = 
+	http://*.lan
+	http://*.local
+	https://my.mainsail.xyz
+	http://my.mainsail.xyz
+	https://app.fluidd.xyz
+	http://app.fluidd.xyz
+
+[octoprint_compat]
+
+[history]
+
+[update_manager]
+channel = dev
+refresh_interval = 168
+
+[update_manager mainsail]
+type = web
+channel = stable
+repo = mainsail-crew/mainsail
+path = ~/mainsail
+
+[file_manager]
+enable_object_processing = True
+
+#################################################################
+All Configuration Files:
+/home/dietpi/printer_data/config/moonraker.conf
+#################################################################
+Unsafe Shutdown Count: 23
+
+System Info:
+
+***python***
+  version: sys.version_info(major=3, minor=9, micro=2, releaselevel='final', serial=0)
+  version_string: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 64bit
+  processor: aarch64
+  cpu_desc: ARMv8 Processor rev 4 (v8l)
+  serial_number: 
+  hardware_desc: 
+  model: 
+  total_memory: 3876292
+  memory_units: kB
+
+***sd_info***
+
+***distribution***
+  name: Debian GNU/Linux 11 (bullseye)
+  id: debian
+  version: 11
+  version_parts: {'major': '11', 'minor': '', 'build_number': ''}
+  like: 
+  codename: bullseye
+  release_info: {}
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  sonar
+  crowsnest
+
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['system.slice', 'network-online.target', 'sysinit.target', '-.mount']
+**After=['basic.target', 'systemd-journald.socket', 'sysinit.target', 'network-online.target', 'system.slice', '-.mount']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/dietpi/printer_data/systemd/moonraker.env
+**ExecStart=/home/dietpi/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=/home/dietpi/moonraker
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=dietpi
+
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['-.mount', 'sysinit.target', 'system.slice']
+**After=['systemd-journald.socket', 'network-online.target', 'basic.target', 'system.slice', 'sysinit.target', '-.mount']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/dietpi/printer_data/systemd/klipper.env
+**ExecStart=/home/dietpi/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/dietpi/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=dietpi
+Git Repo moonraker: No warnings detected
+Git Repo klipper: No warnings detected
+Klipper Version: v0.11.0-248-gd725dfd3
+2023-07-25 00:06:26,402 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 00:06:26,404 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 00:06:36,447 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 00:06:36,452 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 00:22:29,942 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.128
+2023-07-25 00:22:29,944 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 8.38ms
+2023-07-25 00:22:29,945 [websockets.py:open()] - Websocket Opened: ID: 281473528620656, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 00:22:29,960 [websockets.py:_handle_identify()] - Websocket 281473528620656 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 00:22:36,366 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-07-25 00:22:37,639 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-07-25 00:22:40,056 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-07-25 00:22:40,059 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-07-25 00:22:40,314 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-07-25 00:22:40,584 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-07-25 00:22:41,060 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor radxa', 'temperature_sensor mcu_temp', 'extruder']
+2023-07-25 01:02:15,026 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 01:02:15,028 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 01:02:25,046 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 01:02:45,115 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 01:02:45,117 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 01:06:25,723 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 01:06:25,725 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 01:06:35,746 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 01:07:00,134 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473528620656
+2023-07-25 01:07:04,958 [websockets.py:on_close()] - Websocket Closed: ID: 281473528620656 Close Code: None, Close Reason: None, Pong Time Elapsed: 44.99
+2023-07-25 01:07:08,663 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 4.04ms
+2023-07-25 01:07:08,664 [websockets.py:open()] - Websocket Opened: ID: 281473501906736, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 01:07:08,677 [websockets.py:_handle_identify()] - Websocket 281473501906736 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 01:07:15,855 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 01:07:15,857 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 01:33:23,158 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 01:33:23,160 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 01:33:33,175 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 01:33:33,177 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 01:38:23,962 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 01:38:23,965 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 01:38:33,986 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 01:38:45,142 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2023-07-25 01:38:47,188 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2023-07-25 01:38:48,922 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473501906736
+2023-07-25 01:38:53,680 [websockets.py:on_close()] - Websocket Closed: ID: 281473501906736 Close Code: None, Close Reason: None, Pong Time Elapsed: 44.99
+2023-07-25 01:39:14,056 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 01:39:14,058 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 01:39:30,003 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 8.87ms
+2023-07-25 01:39:30,004 [websockets.py:open()] - Websocket Opened: ID: 281473501907168, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 01:39:30,011 [websockets.py:_handle_identify()] - Websocket 281473501907168 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 01:40:00,179 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473501907168
+2023-07-25 01:40:05,011 [websockets.py:on_close()] - Websocket Closed: ID: 281473501907168 Close Code: None, Close Reason: None, Pong Time Elapsed: 35.01
+2023-07-25 01:41:42,072 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 4.17ms
+2023-07-25 01:41:42,073 [websockets.py:open()] - Websocket Opened: ID: 281473501906640, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 01:41:42,092 [websockets.py:_handle_identify()] - Websocket 281473501906640 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 01:42:12,532 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473501906640
+2023-07-25 01:42:17,096 [websockets.py:on_close()] - Websocket Closed: ID: 281473501906640 Close Code: None, Close Reason: None, Pong Time Elapsed: 35.02
+2023-07-25 01:43:34,781 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 01:43:34,783 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 01:43:44,788 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 01:43:54,796 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 01:43:54,799 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 01:45:31,831 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 11.77ms
+2023-07-25 01:45:31,833 [websockets.py:open()] - Websocket Opened: ID: 281473501905632, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 01:45:31,837 [websockets.py:_handle_identify()] - Websocket 281473501905632 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 01:50:41,853 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473501905632
+2023-07-25 01:50:46,844 [websockets.py:on_close()] - Websocket Closed: ID: 281473501905632 Close Code: None, Close Reason: None, Pong Time Elapsed: 35.01
+2023-07-25 01:51:16,684 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 5.13ms
+2023-07-25 01:51:16,685 [websockets.py:open()] - Websocket Opened: ID: 281473505505040, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 01:51:16,691 [websockets.py:_handle_identify()] - Websocket 281473505505040 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 01:53:16,893 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473505505040
+2023-07-25 01:53:21,701 [websockets.py:on_close()] - Websocket Closed: ID: 281473505505040 Close Code: None, Close Reason: None, Pong Time Elapsed: 45.00
+2023-07-25 01:54:14,588 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 17.27ms
+2023-07-25 01:54:14,591 [websockets.py:open()] - Websocket Opened: ID: 281473505502016, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 01:54:14,596 [websockets.py:_handle_identify()] - Websocket 281473505502016 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 01:54:45,480 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473505502016
+2023-07-25 01:54:49,607 [websockets.py:on_close()] - Websocket Closed: ID: 281473505502016 Close Code: None, Close Reason: None, Pong Time Elapsed: 35.03
+2023-07-25 01:55:16,560 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 21.29ms
+2023-07-25 01:55:16,561 [websockets.py:open()] - Websocket Opened: ID: 281473505461920, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 01:55:16,570 [websockets.py:_handle_identify()] - Websocket 281473505461920 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 02:58:43,782 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.128
+2023-07-25 04:08:20,575 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.230
+2023-07-25 04:08:20,577 [app.py:log_request()] - 101 GET /websocket (192.168.50.230) [_TRUSTED_USER_] 5.05ms
+2023-07-25 04:08:20,578 [websockets.py:open()] - Websocket Opened: ID: 281473501753792, Proxied: True, User Agent: BBL-Slicer/v01.06.00.66 (light) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.50.236
+2023-07-25 04:08:20,594 [websockets.py:_handle_identify()] - Websocket 281473501753792 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 04:09:50,574 [app.py:prepare()] - Upload Request Received from 192.168.50.230
+2023-07-25 04:09:50,589 [app.py:post()] - Processing Uploaded File: printer.cfg
+2023-07-25 04:09:50,606 [app.py:log_request()] - 201 POST /server/files/upload (192.168.50.230) [_TRUSTED_USER_] 37.92ms
+2023-07-25 04:09:51,677 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-07-25 04:09:52,952 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-07-25 04:09:55,385 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-07-25 04:09:55,388 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-07-25 04:09:55,636 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-07-25 04:09:55,918 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-07-25 04:09:56,412 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor radxa', 'temperature_sensor mcu_temp', 'extruder']
+2023-07-25 04:22:20,498 [app.py:prepare()] - Upload Request Received from 192.168.50.230
+2023-07-25 04:22:24,262 [app.py:post()] - Processing Uploaded File: ksr_fdmtest_v4.gcode
+2023-07-25 04:22:24,661 [shell_command.py:pipe_data_received()] - INFO:metadata:Object Processing is enabled
+
+2023-07-25 04:22:24,671 [shell_command.py:pipe_data_received()] - INFO:metadata:File 'ksr_fdmtest_v4.gcode' currently supports cancellation, processing aborted
+
+2023-07-25 04:22:24,865 [shell_command.py:_check_proc_success()] - Command (/home/dietpi/moonraker-env/bin/python /home/dietpi/moonraker/moonraker/components/file_manager/metadata.py -p /home/dietpi/printer_data/gcodes -f "ksr_fdmtest_v4.gcode" --check-objects) successfully finished
+2023-07-25 04:22:24,870 [file_manager.py:_check_action()] - 
+Inotify action mismatch:
+Expected action: create_file, Inotify action: modify_file
+Requested path: /home/dietpi/printer_data/gcodes/ksr_fdmtest_v4.gcode
+Inotify path: /home/dietpi/printer_data/gcodes/ksr_fdmtest_v4.gcode
+Is move/copy: False
+2023-07-25 04:22:24,905 [app.py:log_request()] - 201 POST /api/files/local (192.168.50.230) [_TRUSTED_USER_] 4409.25ms
+2023-07-25 04:22:25,090 [job_state.py:_status_update()] - Job Started: ksr_fdmtest_v4.gcode
+2023-07-25 04:32:42,099 [websockets.py:on_close()] - Websocket Closed: ID: 281473501753792 Close Code: None, Close Reason: None, Pong Time Elapsed: 1.35
+2023-07-25 04:39:20,679 [app.py:log_request()] - 101 GET /websocket (192.168.50.230) [_TRUSTED_USER_] 3.94ms
+2023-07-25 04:39:20,680 [websockets.py:open()] - Websocket Opened: ID: 281473501341248, Proxied: True, User Agent: BBL-Slicer/v01.06.00.66 (light) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.50.236
+2023-07-25 04:39:20,788 [websockets.py:_handle_identify()] - Websocket 281473501341248 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 04:59:21,280 [websockets.py:on_close()] - Websocket Closed: ID: 281473501341248 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 0.49
+2023-07-25 04:59:42,228 [app.py:log_request()] - 101 GET /websocket (192.168.50.230) [_TRUSTED_USER_] 4.43ms
+2023-07-25 04:59:42,229 [websockets.py:open()] - Websocket Opened: ID: 281473501847856, Proxied: True, User Agent: BBL-Slicer/v01.06.00.66 (light) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.50.236
+2023-07-25 04:59:42,249 [websockets.py:_handle_identify()] - Websocket 281473501847856 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 05:00:37,339 [websockets.py:on_close()] - Websocket Closed: ID: 281473501847856 Close Code: None, Close Reason: None, Pong Time Elapsed: 5.03
+2023-07-25 06:03:43,871 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.230
+2023-07-25 06:41:17,947 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 06:41:17,948 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 06:41:27,975 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 06:41:56,821 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473505461920
+2023-07-25 06:41:58,062 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 06:41:58,064 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 06:42:01,567 [websockets.py:on_close()] - Websocket Closed: ID: 281473505461920 Close Code: None, Close Reason: None, Pong Time Elapsed: 44.99
+2023-07-25 06:42:04,539 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.128
+2023-07-25 06:42:04,541 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 4.68ms
+2023-07-25 06:42:04,542 [websockets.py:open()] - Websocket Opened: ID: 281473505466592, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 06:42:04,551 [websockets.py:_handle_identify()] - Websocket 281473505466592 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 07:31:15,000 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 07:31:15,002 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 07:31:25,001 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 07:31:25,003 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 07:43:43,934 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.128
+2023-07-25 08:06:40,061 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 08:06:40,064 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 08:06:50,087 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 08:06:50,089 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 09:26:52,482 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 09:26:52,485 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 09:27:02,416 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 09:27:12,439 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 09:27:12,441 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 09:50:15,926 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 09:50:15,928 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 09:50:25,926 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 09:50:25,928 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 14:01:54,379 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 14:01:54,380 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 14:02:04,404 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 14:02:24,573 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473505466592
+2023-07-25 14:02:29,558 [websockets.py:on_close()] - Websocket Closed: ID: 281473505466592 Close Code: None, Close Reason: None, Pong Time Elapsed: 44.99
+2023-07-25 14:02:39,247 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.128
+2023-07-25 14:02:39,249 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 4.54ms
+2023-07-25 14:02:39,251 [websockets.py:open()] - Websocket Opened: ID: 281473501848816, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 14:02:39,269 [websockets.py:_handle_identify()] - Websocket 281473501848816 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 14:02:44,546 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 14:02:44,548 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 14:03:34,636 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 14:03:34,637 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 14:03:59,281 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473501848816
+2023-07-25 14:04:04,274 [websockets.py:on_close()] - Websocket Closed: ID: 281473501848816 Close Code: None, Close Reason: None, Pong Time Elapsed: 45.01
+2023-07-25 14:04:04,721 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 14:04:04,725 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 14:04:06,199 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 3.94ms
+2023-07-25 14:04:06,200 [websockets.py:open()] - Websocket Opened: ID: 281473501851312, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 14:04:06,212 [websockets.py:_handle_identify()] - Websocket 281473501851312 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 15:08:44,185 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.128
+2023-07-25 15:45:29,593 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 15:45:29,594 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 15:45:39,623 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 15:45:56,306 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473501851312
+2023-07-25 15:45:58,828 [websockets.py:on_close()] - Websocket Closed: ID: 281473501851312 Close Code: None, Close Reason: None, Pong Time Elapsed: 0.01
+2023-07-25 15:45:59,681 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 15:45:59,682 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 15:52:30,691 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 15:52:30,693 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 15:52:40,660 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 15:53:00,712 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 15:53:00,714 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 15:55:41,102 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 15:55:41,104 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 15:55:51,118 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 15:56:11,163 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 15:56:11,164 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 16:23:55,429 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 16:23:55,431 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 16:25:05,623 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 16:25:15,644 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 16:25:45,748 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 16:25:45,751 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 16:28:36,111 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 16:28:36,113 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 16:29:36,267 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 16:29:36,270 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 16:32:26,704 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 16:32:26,705 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 16:32:36,723 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 16:33:16,833 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 16:33:16,835 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 16:37:27,437 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 16:37:27,438 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 16:37:37,470 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 16:37:47,510 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 16:37:47,512 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 16:55:00,145 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 16:55:00,147 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 16:55:20,177 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 16:55:20,178 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 17:13:07,579 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.128
+2023-07-25 17:13:07,581 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 5.08ms
+2023-07-25 17:13:07,582 [websockets.py:open()] - Websocket Opened: ID: 281473503539408, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 17:13:07,594 [websockets.py:_handle_identify()] - Websocket 281473503539408 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 18:13:44,264 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.128
+2023-07-25 18:45:32,997 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 18:45:32,999 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 18:45:43,021 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 18:45:57,757 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473503539408
+2023-07-25 18:46:02,585 [websockets.py:on_close()] - Websocket Closed: ID: 281473503539408 Close Code: None, Close Reason: None, Pong Time Elapsed: 44.96
+2023-07-25 18:46:03,061 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 18:46:03,064 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 18:46:03,843 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.128
+2023-07-25 18:46:03,845 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 4.51ms
+2023-07-25 18:46:03,846 [websockets.py:open()] - Websocket Opened: ID: 281473503539792, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 18:46:03,853 [websockets.py:_handle_identify()] - Websocket 281473503539792 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 18:54:53,995 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 18:54:53,998 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 18:55:04,064 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 18:55:24,059 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 18:55:24,061 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 19:48:44,296 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.128
+2023-07-25 20:11:13,262 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 20:11:13,266 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 20:11:23,287 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 20:11:43,919 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473503539792
+2023-07-25 20:11:48,870 [websockets.py:on_close()] - Websocket Closed: ID: 281473503539792 Close Code: None, Close Reason: None, Pong Time Elapsed: 44.85
+2023-07-25 20:11:50,145 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.128
+2023-07-25 20:11:50,148 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 26.36ms
+2023-07-25 20:11:50,148 [websockets.py:open()] - Websocket Opened: ID: 281473501851456, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 20:11:50,154 [websockets.py:_handle_identify()] - Websocket 281473501851456 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 20:11:53,371 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 20:11:53,375 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 21:03:50,148 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 21:03:50,152 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 21:04:00,170 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 21:04:20,213 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473501851456
+2023-07-25 21:04:25,161 [websockets.py:on_close()] - Websocket Closed: ID: 281473501851456 Close Code: None, Close Reason: None, Pong Time Elapsed: 44.94
+2023-07-25 21:04:30,255 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 21:04:30,257 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 21:04:31,453 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 3.99ms
+2023-07-25 21:04:31,454 [websockets.py:open()] - Websocket Opened: ID: 281473502775040, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 21:04:31,472 [websockets.py:_handle_identify()] - Websocket 281473502775040 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 21:16:51,749 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 21:16:51,751 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 21:17:01,789 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 21:17:21,599 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473502775040
+2023-07-25 21:17:26,461 [websockets.py:on_close()] - Websocket Closed: ID: 281473502775040 Close Code: None, Close Reason: None, Pong Time Elapsed: 44.99
+2023-07-25 21:17:28,432 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 4.34ms
+2023-07-25 21:17:28,434 [websockets.py:open()] - Websocket Opened: ID: 281473501851168, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 21:17:28,450 [websockets.py:_handle_identify()] - Websocket 281473501851168 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 21:17:31,887 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 21:17:31,889 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 21:50:26,712 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 21:50:26,713 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 21:50:36,747 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 21:50:58,450 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473501851168
+2023-07-25 21:51:03,453 [websockets.py:on_close()] - Websocket Closed: ID: 281473501851168 Close Code: None, Close Reason: None, Pong Time Elapsed: 45.01
+2023-07-25 21:51:06,795 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 21:51:06,797 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 21:51:10,142 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 4.13ms
+2023-07-25 21:51:10,143 [websockets.py:open()] - Websocket Opened: ID: 281473501849632, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 21:51:10,155 [websockets.py:_handle_identify()] - Websocket 281473501849632 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 21:52:37,192 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 21:52:37,194 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 21:52:47,100 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 21:53:10,304 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473501849632
+2023-07-25 21:53:15,158 [websockets.py:on_close()] - Websocket Closed: ID: 281473501849632 Close Code: None, Close Reason: None, Pong Time Elapsed: 40.15
+2023-07-25 21:53:23,091 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 4.40ms
+2023-07-25 21:53:23,092 [websockets.py:open()] - Websocket Opened: ID: 281473501847952, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 21:53:23,105 [websockets.py:_handle_identify()] - Websocket 281473501847952 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 21:53:27,224 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 21:53:27,226 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 22:33:42,807 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.230
+2023-07-25 22:33:42,809 [app.py:log_request()] - 101 GET /websocket (192.168.50.230) [_TRUSTED_USER_] 8.18ms
+2023-07-25 22:33:42,810 [websockets.py:open()] - Websocket Opened: ID: 281473503539936, Proxied: True, User Agent: BBL-Slicer/v01.06.00.66 (light) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.50.236
+2023-07-25 22:33:49,405 [websockets.py:_handle_identify()] - Websocket 281473503539936 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 22:34:16,691 [websockets.py:on_close()] - Websocket Closed: ID: 281473503539936 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 3.80
+2023-07-25 22:44:04,780 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 22:44:04,782 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 22:44:33,189 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473501847952
+2023-07-25 22:44:37,537 [websockets.py:on_close()] - Websocket Closed: ID: 281473501847952 Close Code: None, Close Reason: None, Pong Time Elapsed: 0.02
+2023-07-25 22:44:44,900 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 22:44:44,902 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 22:52:26,056 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 22:52:26,060 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 22:52:36,090 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 22:53:06,140 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 22:53:06,142 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 22:53:44,385 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.128
+2023-07-25 22:59:17,086 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 22:59:17,087 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 22:59:19,400 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.128
+2023-07-25 22:59:19,402 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 14.10ms
+2023-07-25 22:59:19,403 [websockets.py:open()] - Websocket Opened: ID: 281473502776000, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-25 22:59:19,441 [websockets.py:_handle_identify()] - Websocket 281473502776000 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-25 22:59:27,437 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 22:59:27,439 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 23:02:47,999 [websockets.py:on_close()] - Websocket Closed: ID: 281473502776000 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 8.57
+2023-07-25 23:14:09,659 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:14:09,661 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 23:14:19,688 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:14:39,733 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 23:14:39,736 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 23:19:00,411 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:19:00,413 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 23:19:10,464 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:19:40,502 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 23:19:40,503 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 23:21:50,829 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:21:50,831 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 23:22:00,849 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:22:30,921 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 23:22:30,923 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 23:33:44,398 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.230
+2023-07-25 23:42:53,940 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:42:53,942 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 23:43:03,980 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:43:24,061 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 23:43:24,063 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 23:44:04,114 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:44:04,116 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 23:44:44,267 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 23:44:44,269 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 23:46:04,425 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:46:04,426 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 23:46:14,465 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:46:34,496 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 23:46:34,498 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 23:52:05,332 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:52:05,333 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 23:52:15,376 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:52:45,448 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 23:52:45,450 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-25 23:55:15,871 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:55:15,873 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-25 23:55:25,924 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-25 23:56:06,013 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-25 23:56:06,015 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236

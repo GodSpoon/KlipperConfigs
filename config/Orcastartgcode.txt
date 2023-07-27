@@ -1,0 +1,1 @@
+START_PRINT EXTRUDER_TEMP=[nozzle_temperature_initial_layer] BED_TEMP=[hot_plate_temp_initial_layer] RELATIVE_E_MODE=[use_relative_e_distances] PRESSURE_ADVANCE=[pressure_advance]

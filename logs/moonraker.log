@@ -1,0 +1,979 @@
+-------------------- Log Start | Thu Jul 27 00:01:29 2023 --------------------
+data_path: /home/dietpi/printer_data
+is_default_data_path: False
+config_file: /home/dietpi/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: False
+instance_uuid: 1f5d65d8a6e34c419413da9abcc0a6ce
+software_version: v0.8.0-115-gfdc3e0e
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/dietpi/printer_data/logs/moonraker.log
+python_version: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+klippy_uds_address = /home/dietpi/printer_data/comms/klippy.sock
+
+[authorization]
+trusted_clients = 
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+cors_domains = 
+	http://*.lan
+	http://*.local
+	https://my.mainsail.xyz
+	http://my.mainsail.xyz
+	https://app.fluidd.xyz
+	http://app.fluidd.xyz
+
+[octoprint_compat]
+
+[history]
+
+[update_manager]
+channel = dev
+refresh_interval = 168
+
+[update_manager mainsail]
+type = web
+channel = stable
+repo = mainsail-crew/mainsail
+path = ~/mainsail
+
+[file_manager]
+enable_object_processing = True
+
+#################################################################
+All Configuration Files:
+/home/dietpi/printer_data/config/moonraker.conf
+#################################################################
+Unsafe Shutdown Count: 23
+
+System Info:
+
+***python***
+  version: sys.version_info(major=3, minor=9, micro=2, releaselevel='final', serial=0)
+  version_string: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 64bit
+  processor: aarch64
+  cpu_desc: ARMv8 Processor rev 4 (v8l)
+  serial_number: 
+  hardware_desc: 
+  model: 
+  total_memory: 3876292
+  memory_units: kB
+
+***sd_info***
+
+***distribution***
+  name: Debian GNU/Linux 11 (bullseye)
+  id: debian
+  version: 11
+  version_parts: {'major': '11', 'minor': '', 'build_number': ''}
+  like: 
+  codename: bullseye
+  release_info: {}
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  sonar
+  crowsnest
+
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['system.slice', 'network-online.target', 'sysinit.target', '-.mount']
+**After=['basic.target', 'systemd-journald.socket', 'sysinit.target', 'network-online.target', 'system.slice', '-.mount']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/dietpi/printer_data/systemd/moonraker.env
+**ExecStart=/home/dietpi/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=/home/dietpi/moonraker
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=dietpi
+
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['-.mount', 'sysinit.target', 'system.slice']
+**After=['systemd-journald.socket', 'network-online.target', 'basic.target', 'system.slice', 'sysinit.target', '-.mount']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/dietpi/printer_data/systemd/klipper.env
+**ExecStart=/home/dietpi/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/dietpi/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=dietpi
+Git Repo moonraker: No warnings detected
+Git Repo klipper: No warnings detected
+Klipper Version: v0.11.0-248-gd725dfd3
+2023-07-27 01:01:29,533 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.230
+2023-07-27 01:01:29,535 [app.py:log_request()] - 101 GET /websocket (192.168.50.230) [_TRUSTED_USER_] 4.67ms
+2023-07-27 01:01:29,536 [websockets.py:open()] - Websocket Opened: ID: 281473505195968, Proxied: True, User Agent: BBL-Slicer/v01.06.00.66 (light) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.50.236
+2023-07-27 01:01:29,708 [websockets.py:_handle_identify()] - Websocket 281473505195968 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 01:10:14,147 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 01:10:14,149 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 01:10:24,185 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 01:10:39,561 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473505195968
+2023-07-27 01:10:44,069 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473505194192
+2023-07-27 01:10:44,562 [websockets.py:on_close()] - Websocket Closed: ID: 281473505195968 Close Code: None, Close Reason: None, Pong Time Elapsed: 44.95
+2023-07-27 01:10:48,955 [websockets.py:on_close()] - Websocket Closed: ID: 281473505194192 Close Code: None, Close Reason: None, Pong Time Elapsed: 44.96
+2023-07-27 01:10:50,814 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.128
+2023-07-27 01:10:50,818 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 5.68ms
+2023-07-27 01:10:50,819 [websockets.py:open()] - Websocket Opened: ID: 281473505195536, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-27 01:10:50,828 [websockets.py:_handle_identify()] - Websocket 281473505195536 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 01:10:53,560 [app.py:log_request()] - 101 GET /websocket (192.168.50.230) [_TRUSTED_USER_] 4.15ms
+2023-07-27 01:10:53,561 [websockets.py:open()] - Websocket Opened: ID: 281473505153760, Proxied: True, User Agent: BBL-Slicer/v01.06.00.66 (light) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.50.236
+2023-07-27 01:10:53,595 [websockets.py:_handle_identify()] - Websocket 281473505153760 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 01:10:54,271 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 01:10:54,274 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 01:25:50,559 [websockets.py:on_close()] - Websocket Closed: ID: 281473505153760 Close Code: None, Close Reason: None, Pong Time Elapsed: 3.61
+2023-07-27 01:36:53,611 [app.py:log_request()] - 101 GET /websocket (192.168.50.230) [_TRUSTED_USER_] 3.93ms
+2023-07-27 01:36:53,611 [websockets.py:open()] - Websocket Opened: ID: 281473505156208, Proxied: True, User Agent: BBL-Slicer/v01.06.00.66 (light) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.50.236
+2023-07-27 01:36:53,687 [websockets.py:_handle_identify()] - Websocket 281473505156208 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 01:43:24,937 [websockets.py:on_close()] - Websocket Closed: ID: 281473505156208 Close Code: None, Close Reason: None, Pong Time Elapsed: 1.13
+2023-07-27 01:45:48,802 [app.py:log_request()] - 101 GET /websocket (192.168.50.230) [_TRUSTED_USER_] 5.77ms
+2023-07-27 01:45:48,803 [websockets.py:open()] - Websocket Opened: ID: 281473505155920, Proxied: True, User Agent: BBL-Slicer/v01.06.00.66 (light) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.50.236
+2023-07-27 01:45:48,907 [websockets.py:_handle_identify()] - Websocket 281473505155920 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 01:56:44,493 [websockets.py:on_close()] - Websocket Closed: ID: 281473505155920 Close Code: None, Close Reason: None, Pong Time Elapsed: 5.66
+2023-07-27 02:15:11,432 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.128
+2023-07-27 02:31:38,547 [app.py:log_request()] - 101 GET /websocket (192.168.50.230) [_TRUSTED_USER_] 6.58ms
+2023-07-27 02:31:38,549 [websockets.py:open()] - Websocket Opened: ID: 281473505154912, Proxied: True, User Agent: BBL-Slicer/v01.06.00.66 (light) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.50.236
+2023-07-27 02:31:38,568 [websockets.py:_handle_identify()] - Websocket 281473505154912 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 03:15:50,030 [websockets.py:on_close()] - Websocket Closed: ID: 281473505154912 Close Code: None, Close Reason: None, Pong Time Elapsed: 1.47
+2023-07-27 03:20:03,804 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 03:20:03,807 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 03:20:13,740 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 03:20:23,733 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 03:20:23,735 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 03:21:43,942 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 03:21:43,944 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 03:22:10,898 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473505195536
+2023-07-27 03:22:15,833 [websockets.py:on_close()] - Websocket Closed: ID: 281473505195536 Close Code: None, Close Reason: None, Pong Time Elapsed: 45.00
+2023-07-27 03:22:24,037 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 03:22:24,039 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 03:22:24,302 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.128
+2023-07-27 03:22:24,304 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 4.58ms
+2023-07-27 03:22:24,304 [websockets.py:open()] - Websocket Opened: ID: 281473505155632, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-27 03:22:24,315 [websockets.py:_handle_identify()] - Websocket 281473505155632 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 03:25:54,554 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 03:25:54,556 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 03:26:04,578 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 03:26:04,582 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 03:35:11,464 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.230
+2023-07-27 03:59:06,516 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.230
+2023-07-27 03:59:06,521 [app.py:log_request()] - 101 GET /websocket (192.168.50.230) [_TRUSTED_USER_] 10.67ms
+2023-07-27 03:59:06,522 [websockets.py:open()] - Websocket Opened: ID: 281473505196160, Proxied: True, User Agent: BBL-Slicer/v01.06.00.66 (light) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.50.236
+2023-07-27 03:59:06,528 [websockets.py:_handle_identify()] - Websocket 281473505196160 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 04:25:11,489 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.128
+2023-07-27 04:40:55,413 [app.py:log_request()] - 101 GET /websocket (192.168.50.230) [_TRUSTED_USER_] 5.13ms
+2023-07-27 04:40:55,415 [websockets.py:open()] - Websocket Opened: ID: 281473505195488, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.183, Host Name: 192.168.50.236
+2023-07-27 04:40:55,433 [websockets.py:_handle_identify()] - Websocket 281473505195488 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 04:45:03,424 [websockets.py:on_close()] - Websocket Closed: ID: 281473505195488 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 8.00
+2023-07-27 04:45:15,363 [websockets.py:on_close()] - Websocket Closed: ID: 281473505196160 Close Code: None, Close Reason: None, Pong Time Elapsed: 8.83
+2023-07-27 04:45:27,675 [app.py:log_request()] - 101 GET /websocket (192.168.50.230) [_TRUSTED_USER_] 6.36ms
+2023-07-27 04:45:27,678 [websockets.py:open()] - Websocket Opened: ID: 281473505155296, Proxied: True, User Agent: BBL-Slicer/v01.06.00.66 (light) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 192.168.50.236
+2023-07-27 04:45:28,044 [websockets.py:_handle_identify()] - Websocket 281473505155296 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 05:45:35,750 [websockets.py:on_close()] - Websocket Closed: ID: 281473505155296 Close Code: None, Close Reason: None, Pong Time Elapsed: 7.82
+2023-07-27 05:50:11,510 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.230
+2023-07-27 06:21:45,995 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 06:21:45,996 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 06:21:56,013 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 06:22:06,026 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 06:22:06,029 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 06:40:08,386 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 06:40:08,388 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 06:40:11,666 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2023-07-27 06:40:13,700 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2023-07-27 06:40:34,420 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473505155632
+2023-07-27 06:40:38,450 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 06:40:38,452 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 06:40:39,312 [websockets.py:on_close()] - Websocket Closed: ID: 281473505155632 Close Code: None, Close Reason: None, Pong Time Elapsed: 44.97
+2023-07-27 06:40:40,781 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.128
+2023-07-27 06:40:40,793 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 17.52ms
+2023-07-27 06:40:40,795 [websockets.py:open()] - Websocket Opened: ID: 281473505194576, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-27 06:40:40,802 [websockets.py:_handle_identify()] - Websocket 281473505194576 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 07:16:03,139 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 07:16:03,141 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 07:16:20,816 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 12.74ms
+2023-07-27 07:16:20,817 [websockets.py:open()] - Websocket Opened: ID: 281473505197600, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-27 07:16:20,822 [websockets.py:_handle_identify()] - Websocket 281473505197600 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 07:16:21,138 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473505194576
+2023-07-27 07:16:23,171 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 07:16:23,175 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 07:16:25,822 [websockets.py:on_close()] - Websocket Closed: ID: 281473505194576 Close Code: None, Close Reason: None, Pong Time Elapsed: 35.01
+2023-07-27 08:17:41,752 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 08:17:41,755 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 08:17:51,775 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 08:18:11,811 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 08:18:11,813 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 08:20:11,577 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.128
+2023-07-27 08:21:42,286 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 08:21:42,287 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 08:21:52,324 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 08:22:10,935 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473505197600
+2023-07-27 08:22:15,836 [websockets.py:on_close()] - Websocket Closed: ID: 281473505197600 Close Code: None, Close Reason: None, Pong Time Elapsed: 45.01
+2023-07-27 08:22:17,967 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.128
+2023-07-27 08:22:17,975 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 11.77ms
+2023-07-27 08:22:17,978 [websockets.py:open()] - Websocket Opened: ID: 281473505195056, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-27 08:22:17,988 [websockets.py:_handle_identify()] - Websocket 281473505195056 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 08:22:22,350 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 08:22:22,352 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 09:25:11,604 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.128
+2023-07-27 10:16:58,842 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 10:16:58,843 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 10:17:08,861 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 10:17:08,864 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 12:03:45,446 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 12:03:45,447 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 12:04:08,084 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473505195056
+2023-07-27 12:04:12,980 [websockets.py:on_close()] - Websocket Closed: ID: 281473505195056 Close Code: None, Close Reason: None, Pong Time Elapsed: 44.97
+2023-07-27 12:04:23,808 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.128
+2023-07-27 12:04:23,813 [app.py:log_request()] - 101 GET /websocket (192.168.50.128) [_TRUSTED_USER_] 9.12ms
+2023-07-27 12:04:23,815 [websockets.py:open()] - Websocket Opened: ID: 281473505155680, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36, Host Name: 192.168.50.236
+2023-07-27 12:04:23,823 [websockets.py:_handle_identify()] - Websocket 281473505155680 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 12:04:25,545 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 12:04:25,548 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 12:15:27,240 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 12:15:27,242 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 12:15:37,305 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 12:15:53,954 [websockets.py:write_to_socket()] - Websocket closed while writing: 281473505155680
+2023-07-27 12:15:57,336 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 12:15:57,338 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 12:15:57,820 [websockets.py:on_close()] - Websocket Closed: ID: 281473505155680 Close Code: None, Close Reason: None, Pong Time Elapsed: 0.00
+2023-07-27 13:05:11,713 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.128
+2023-07-27 13:13:56,226 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 13:13:56,227 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 13:14:06,235 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 13:14:36,311 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 13:14:36,313 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 13:16:20,754 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.23
+2023-07-27 13:16:20,756 [app.py:log_request()] - 101 GET /websocket (192.168.50.23) [_TRUSTED_USER_] 5.10ms
+2023-07-27 13:16:20,757 [websockets.py:open()] - Websocket Opened: ID: 281473505195488, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.183, Host Name: 192.168.50.236
+2023-07-27 13:16:20,939 [websockets.py:_handle_identify()] - Websocket 281473505195488 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 13:32:39,219 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 13:32:39,220 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 13:32:49,253 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 13:33:09,303 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 13:33:09,305 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 13:50:45,166 [websockets.py:on_close()] - Websocket Closed: ID: 281473505195488 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 4.35
+2023-07-27 14:50:11,769 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.23
+2023-07-27 16:00:01,857 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:00:01,859 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 16:00:31,919 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 16:00:31,921 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 16:01:42,373 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:01:42,375 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 16:01:52,187 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:02:22,269 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 16:02:22,271 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 16:04:32,582 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:04:32,584 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 16:04:52,680 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:05:32,742 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 16:05:32,744 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 16:09:13,292 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:09:13,294 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 16:09:23,324 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:09:53,397 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 16:09:53,399 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 16:14:04,087 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:14:04,089 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 16:14:14,106 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:14:54,192 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 16:14:54,195 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 16:27:56,255 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:27:56,257 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 16:28:06,265 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:28:36,350 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 16:28:36,353 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 16:41:48,363 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:41:48,365 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 16:41:58,397 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:42:28,477 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 16:42:28,479 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 16:47:39,240 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:47:39,242 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 16:47:49,277 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 16:48:19,386 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 16:48:19,390 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 16:53:56,695 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.50.23
+2023-07-27 16:53:56,697 [app.py:log_request()] - 101 GET /websocket (192.168.50.23) [_TRUSTED_USER_] 4.79ms
+2023-07-27 16:53:56,699 [websockets.py:open()] - Websocket Opened: ID: 281473501564016, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.183, Host Name: 192.168.50.236
+2023-07-27 16:53:56,774 [websockets.py:_handle_identify()] - Websocket 281473501564016 Client Identified - Name: mainsail, Version: 2.6.0, Type: web
+2023-07-27 17:11:35,427 [websockets.py:on_close()] - Websocket Closed: ID: 281473501564016 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 8.70
+2023-07-27 17:19:14,373 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 17:19:14,375 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 17:19:24,388 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 17:21:04,620 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 17:21:04,622 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 17:25:55,372 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 17:25:55,376 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 17:26:05,440 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 17:26:35,481 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 17:26:35,483 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 17:28:35,820 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 17:28:35,824 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 17:28:45,858 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 17:29:25,941 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 17:29:25,943 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 17:32:56,496 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 17:32:56,499 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 17:33:06,525 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 17:33:36,619 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 17:33:36,622 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 17:43:38,224 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 17:43:38,226 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 17:43:48,243 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 17:44:18,309 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 17:44:18,311 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 17:51:09,341 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 17:51:09,343 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 17:51:59,472 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 17:51:59,474 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 18:10:11,880 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.50.23
+2023-07-27 18:16:23,219 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 18:16:23,220 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 18:16:53,314 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 18:16:53,316 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 18:22:34,683 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 18:22:34,686 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 18:22:44,179 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 18:23:24,288 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 18:23:24,292 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 18:30:35,342 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 18:30:35,344 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 18:31:15,472 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 18:31:15,474 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 18:33:25,785 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 18:33:25,787 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 18:33:35,851 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 18:34:05,924 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 18:34:05,928 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 18:46:37,824 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 18:46:37,826 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 18:46:47,896 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 18:47:07,897 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 18:47:07,899 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 18:54:08,958 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 18:54:08,959 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 18:54:18,977 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 18:54:49,121 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 18:54:49,126 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 19:01:40,195 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 19:01:40,196 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 19:01:50,220 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 19:02:20,290 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 19:02:20,292 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 19:17:42,690 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 19:17:42,692 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 19:17:52,705 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 19:18:22,798 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 19:18:22,800 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 19:22:03,362 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 19:22:03,364 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 19:22:13,383 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 19:22:33,460 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 19:22:33,462 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 19:24:13,685 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 19:24:13,687 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 19:24:23,709 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 19:24:43,748 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 19:24:43,750 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 19:42:06,497 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 19:42:06,499 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 19:42:16,558 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 19:42:46,601 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 19:42:46,603 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 19:51:17,978 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 19:51:17,979 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 19:51:27,998 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 19:51:38,034 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 19:51:38,036 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 20:08:50,567 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 20:08:50,569 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 20:09:00,583 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 20:09:10,601 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 20:09:20,637 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 20:09:40,687 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 20:09:40,689 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 20:19:01,702 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 20:19:01,703 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 20:19:11,727 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 20:19:11,729 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 20:19:50,054 [server.py:_handle_term_signal()] - Exiting with signal SIGTERM
+2023-07-27 20:19:50,068 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-07-27 20:19:50,165 [database.py:close()] - Database statistics:
+
+announcements:
+psize: 4096
+depth: 0
+branch_pages: 0
+leaf_pages: 0
+overflow_pages: 0
+entries: 0
+authorized_users:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+gcode_metadata:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 30
+overflow_pages: 0
+entries: 120
+history:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 64
+overflow_pages: 0
+entries: 220
+mainsail:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 2
+overflow_pages: 1
+entries: 10
+mobileraker:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 1
+entries: 2
+moonraker:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 7
+update_manager:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 4
+webcams:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+2023-07-27 20:19:50,235 [server.py:main()] - Server Shutdown
+-------------------- Log Start | Thu Jul 27 19:20:50 2023 --------------------
+data_path: /home/dietpi/printer_data
+is_default_data_path: False
+config_file: /home/dietpi/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: False
+instance_uuid: 1f5d65d8a6e34c419413da9abcc0a6ce
+software_version: v0.8.0-115-gfdc3e0e
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/dietpi/printer_data/logs/moonraker.log
+python_version: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+2023-07-27 20:20:50,552 [confighelper.py:read_file()] - Configuration File '/home/dietpi/printer_data/config/moonraker.conf' parsed, total size: 632 B
+2023-07-27 20:20:50,553 [server.py:add_log_rollover_item()] - 
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+klippy_uds_address = /home/dietpi/printer_data/comms/klippy.sock
+
+[authorization]
+trusted_clients = 
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+cors_domains = 
+	http://*.lan
+	http://*.local
+	https://my.mainsail.xyz
+	http://my.mainsail.xyz
+	https://app.fluidd.xyz
+	http://app.fluidd.xyz
+
+[octoprint_compat]
+
+[history]
+
+[update_manager]
+channel = dev
+refresh_interval = 168
+
+[update_manager mainsail]
+type = web
+channel = stable
+repo = mainsail-crew/mainsail
+path = ~/mainsail
+
+[file_manager]
+enable_object_processing = True
+
+#################################################################
+All Configuration Files:
+/home/dietpi/printer_data/config/moonraker.conf
+#################################################################
+2023-07-27 20:20:50,587 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /server/logs/rollover
+2023-07-27 20:20:50,588 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.logs.rollover
+2023-07-27 20:20:50,588 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/info
+2023-07-27 20:20:50,589 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.info
+2023-07-27 20:20:50,589 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/config
+2023-07-27 20:20:50,590 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.config
+2023-07-27 20:20:50,593 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /server/restart
+2023-07-27 20:20:50,594 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.restart
+2023-07-27 20:20:50,740 [server.py:load_component()] - Component (dbus_manager) loaded
+2023-07-27 20:20:50,794 [server.py:add_log_rollover_item()] - Unsafe Shutdown Count: 23
+2023-07-27 20:20:50,848 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/database/list
+2023-07-27 20:20:50,849 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.database.list
+2023-07-27 20:20:50,850 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET POST DELETE) /server/database/item
+2023-07-27 20:20:50,851 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.database.get_item, server.database.post_item, server.database.delete_item
+2023-07-27 20:20:50,851 [server.py:load_component()] - Component (database) loaded
+2023-07-27 20:20:50,929 [file_manager.py:__init__()] - Using File System Observer: inotify
+2023-07-27 20:20:50,958 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/files/list
+2023-07-27 20:20:50,960 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.files.list
+2023-07-27 20:20:50,960 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/files/metadata
+2023-07-27 20:20:50,962 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.files.metadata
+2023-07-27 20:20:50,962 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /server/files/metascan
+2023-07-27 20:20:50,964 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.files.metascan
+2023-07-27 20:20:50,965 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/files/thumbnails
+2023-07-27 20:20:50,966 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.files.thumbnails
+2023-07-27 20:20:50,967 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/files/roots
+2023-07-27 20:20:50,968 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.files.roots
+2023-07-27 20:20:50,969 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET POST DELETE) /server/files/directory
+2023-07-27 20:20:50,975 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.files.get_directory, server.files.post_directory, server.files.delete_directory
+2023-07-27 20:20:50,976 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /server/files/move
+2023-07-27 20:20:50,977 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.files.move
+2023-07-27 20:20:50,977 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /server/files/copy
+2023-07-27 20:20:50,978 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.files.copy
+2023-07-27 20:20:50,979 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /server/files/zip
+2023-07-27 20:20:50,981 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.files.zip
+2023-07-27 20:20:50,981 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.files.delete_file
+2023-07-27 20:20:51,003 [server.py:load_component()] - Component (file_manager) loaded
+2023-07-27 20:20:51,009 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /printer/print/pause
+2023-07-27 20:20:51,010 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.print.pause
+2023-07-27 20:20:51,010 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /printer/print/resume
+2023-07-27 20:20:51,013 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.print.resume
+2023-07-27 20:20:51,014 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /printer/print/cancel
+2023-07-27 20:20:51,021 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.print.cancel
+2023-07-27 20:20:51,023 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /printer/print/start
+2023-07-27 20:20:51,024 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.print.start
+2023-07-27 20:20:51,024 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /printer/restart
+2023-07-27 20:20:51,025 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.restart
+2023-07-27 20:20:51,026 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /printer/firmware_restart
+2023-07-27 20:20:51,034 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.firmware_restart
+2023-07-27 20:20:51,034 [server.py:load_component()] - Component (klippy_apis) loaded
+2023-07-27 20:20:51,122 [server.py:load_component()] - Component (secrets) loaded
+2023-07-27 20:20:51,141 [server.py:load_component()] - Component (template) loaded
+2023-07-27 20:20:51,173 [server.py:add_log_rollover_item()] - 
+System Info:
+
+***python***
+  version: sys.version_info(major=3, minor=9, micro=2, releaselevel='final', serial=0)
+  version_string: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 64bit
+  processor: aarch64
+  cpu_desc: ARMv8 Processor rev 4 (v8l)
+  serial_number: 
+  hardware_desc: 
+  model: 
+  total_memory: 3876292
+  memory_units: kB
+
+***sd_info***
+
+***distribution***
+  name: Debian GNU/Linux 11 (bullseye)
+  id: debian
+  version: 11
+  version_parts: {'major': '11', 'minor': '', 'build_number': ''}
+  like: 
+  codename: bullseye
+  release_info: {}
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  sonar
+  crowsnest
+2023-07-27 20:20:51,178 [server.py:load_component()] - Component (shell_command) loaded
+2023-07-27 20:20:51,179 [machine.py:__init__()] - Using System Provider: systemd_dbus
+2023-07-27 20:20:51,180 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /machine/reboot
+2023-07-27 20:20:51,181 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.reboot
+2023-07-27 20:20:51,181 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /machine/shutdown
+2023-07-27 20:20:51,182 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.shutdown
+2023-07-27 20:20:51,183 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /machine/services/restart
+2023-07-27 20:20:51,185 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.services.restart
+2023-07-27 20:20:51,185 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /machine/services/stop
+2023-07-27 20:20:51,186 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.services.stop
+2023-07-27 20:20:51,186 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /machine/services/start
+2023-07-27 20:20:51,187 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.services.start
+2023-07-27 20:20:51,188 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /machine/system_info
+2023-07-27 20:20:51,189 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.system_info
+2023-07-27 20:20:51,189 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /machine/sudo/info
+2023-07-27 20:20:51,190 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.sudo.info
+2023-07-27 20:20:51,191 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /machine/sudo/password
+2023-07-27 20:20:51,192 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.sudo.password
+2023-07-27 20:20:51,200 [server.py:load_component()] - Component (machine) loaded
+2023-07-27 20:20:51,204 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/temperature_store
+2023-07-27 20:20:51,207 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.temperature_store
+2023-07-27 20:20:51,207 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/gcode_store
+2023-07-27 20:20:51,208 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.gcode_store
+2023-07-27 20:20:51,209 [server.py:load_component()] - Component (data_store) loaded
+2023-07-27 20:20:51,215 [proc_stats.py:__init__()] - Unable to find 'vcgencmd', throttle checking disabled
+2023-07-27 20:20:51,216 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /machine/proc_stats
+2023-07-27 20:20:51,217 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.proc_stats
+2023-07-27 20:20:51,218 [server.py:load_component()] - Component (proc_stats) loaded
+2023-07-27 20:20:51,224 [server.py:load_component()] - Component (job_state) loaded
+2023-07-27 20:20:51,229 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST DELETE) /server/job_queue/job
+2023-07-27 20:20:51,230 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.job_queue.post_job, server.job_queue.delete_job
+2023-07-27 20:20:51,230 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /server/job_queue/pause
+2023-07-27 20:20:51,231 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.job_queue.pause
+2023-07-27 20:20:51,232 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /server/job_queue/start
+2023-07-27 20:20:51,233 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.job_queue.start
+2023-07-27 20:20:51,233 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/job_queue/status
+2023-07-27 20:20:51,234 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.job_queue.status
+2023-07-27 20:20:51,235 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /server/job_queue/jump
+2023-07-27 20:20:51,236 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.job_queue.jump
+2023-07-27 20:20:51,237 [server.py:load_component()] - Component (job_queue) loaded
+2023-07-27 20:20:51,259 [server.py:load_component()] - Component (http_client) loaded
+2023-07-27 20:20:51,265 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/announcements/list
+2023-07-27 20:20:51,266 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.announcements.list
+2023-07-27 20:20:51,266 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /server/announcements/dismiss
+2023-07-27 20:20:51,268 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.announcements.dismiss
+2023-07-27 20:20:51,268 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /server/announcements/update
+2023-07-27 20:20:51,269 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.announcements.update
+2023-07-27 20:20:51,270 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST DELETE) /server/announcements/feed
+2023-07-27 20:20:51,274 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.announcements.post_feed, server.announcements.delete_feed
+2023-07-27 20:20:51,274 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/announcements/feeds
+2023-07-27 20:20:51,276 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.announcements.feeds
+2023-07-27 20:20:51,277 [server.py:load_component()] - Component (announcements) loaded
+2023-07-27 20:20:51,284 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/webcams/list
+2023-07-27 20:20:51,285 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.webcams.list
+2023-07-27 20:20:51,285 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET POST DELETE) /server/webcams/item
+2023-07-27 20:20:51,287 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.webcams.get_item, server.webcams.post_item, server.webcams.delete_item
+2023-07-27 20:20:51,287 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /server/webcams/test
+2023-07-27 20:20:51,288 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.webcams.test
+2023-07-27 20:20:51,289 [server.py:load_component()] - Component (webcam) loaded
+2023-07-27 20:20:51,296 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: connection.send_event
+2023-07-27 20:20:51,296 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/extensions/list
+2023-07-27 20:20:51,297 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.extensions.list
+2023-07-27 20:20:51,298 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /server/extensions/request
+2023-07-27 20:20:51,299 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.extensions.request
+2023-07-27 20:20:51,299 [server.py:load_component()] - Component (extensions) loaded
+2023-07-27 20:20:51,336 [authorization.py:__init__()] - Authorization Configuration Loaded
+Trusted Clients:
+10.0.0.0/8
+127.0.0.0/8
+169.254.0.0/16
+172.16.0.0/12
+192.168.0.0/16
+fe80::/10
+::1/128
+CORS Domains:
+http://.*\.lan
+http://.*\.local
+https://my\.mainsail\.xyz
+http://my\.mainsail\.xyz
+https://app\.fluidd\.xyz
+http://app\.fluidd\.xyz
+2023-07-27 20:20:51,337 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /access/login
+2023-07-27 20:20:51,338 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: access.login
+2023-07-27 20:20:51,338 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /access/logout
+2023-07-27 20:20:51,339 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: access.logout
+2023-07-27 20:20:51,340 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /access/refresh_jwt
+2023-07-27 20:20:51,341 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: access.refresh_jwt
+2023-07-27 20:20:51,341 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET POST DELETE) /access/user
+2023-07-27 20:20:51,345 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: access.get_user, access.post_user, access.delete_user
+2023-07-27 20:20:51,346 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /access/users/list
+2023-07-27 20:20:51,347 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: access.users.list
+2023-07-27 20:20:51,347 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /access/user/password
+2023-07-27 20:20:51,361 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: access.user.password
+2023-07-27 20:20:51,362 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET POST) /access/api_key
+2023-07-27 20:20:51,363 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: access.get_api_key, access.post_api_key
+2023-07-27 20:20:51,363 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /access/oneshot_token
+2023-07-27 20:20:51,364 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: access.oneshot_token
+2023-07-27 20:20:51,365 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /access/info
+2023-07-27 20:20:51,366 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: access.info
+2023-07-27 20:20:51,366 [server.py:load_component()] - Component (authorization) loaded
+2023-07-27 20:20:51,477 [base_deploy.py:log_info()] - Git Repo moonraker: Detected virtualenv: /home/dietpi/moonraker-env
+2023-07-27 20:20:51,486 [base_deploy.py:log_info()] - Git Repo klipper: Detected virtualenv: /home/dietpi/klippy-env
+2023-07-27 20:20:51,492 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /machine/update/moonraker
+2023-07-27 20:20:51,493 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.update.moonraker
+2023-07-27 20:20:51,494 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /machine/update/klipper
+2023-07-27 20:20:51,495 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.update.klipper
+2023-07-27 20:20:51,495 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /machine/update/system
+2023-07-27 20:20:51,496 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.update.system
+2023-07-27 20:20:51,497 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /machine/update/client
+2023-07-27 20:20:51,501 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.update.client
+2023-07-27 20:20:51,502 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /machine/update/full
+2023-07-27 20:20:51,503 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.update.full
+2023-07-27 20:20:51,503 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /machine/update/status
+2023-07-27 20:20:51,504 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.update.status
+2023-07-27 20:20:51,505 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /machine/update/refresh
+2023-07-27 20:20:51,506 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.update.refresh
+2023-07-27 20:20:51,506 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /machine/update/recover
+2023-07-27 20:20:51,511 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.update.recover
+2023-07-27 20:20:51,511 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /machine/update/rollback
+2023-07-27 20:20:51,513 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: machine.update.rollback
+2023-07-27 20:20:51,513 [server.py:load_component()] - Component (update_manager) loaded
+2023-07-27 20:20:51,520 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET DELETE) /server/history/job
+2023-07-27 20:20:51,521 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.history.get_job, server.history.delete_job
+2023-07-27 20:20:51,521 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/history/list
+2023-07-27 20:20:51,523 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.history.list
+2023-07-27 20:20:51,523 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /server/history/totals
+2023-07-27 20:20:51,524 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.history.totals
+2023-07-27 20:20:51,525 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /server/history/reset_totals
+2023-07-27 20:20:51,528 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: server.history.reset_totals
+2023-07-27 20:20:51,531 [server.py:load_component()] - Component (history) loaded
+2023-07-27 20:20:51,541 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /api/version
+2023-07-27 20:20:51,542 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /api/server
+2023-07-27 20:20:51,543 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /api/login
+2023-07-27 20:20:51,544 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /api/currentuser
+2023-07-27 20:20:51,545 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /api/settings
+2023-07-27 20:20:51,546 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /api/job
+2023-07-27 20:20:51,549 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /api/printer
+2023-07-27 20:20:51,550 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /api/printer/command
+2023-07-27 20:20:51,552 [app.py:register_local_handler()] - Registering HTTP Endpoint: (GET) /api/printerprofiles
+2023-07-27 20:20:51,553 [app.py:register_local_handler()] - Registering HTTP Endpoint: (POST) /api/files/moonraker/(?P<relative_path>.+)
+2023-07-27 20:20:51,556 [server.py:load_component()] - Component (octoprint_compat) loaded
+2023-07-27 20:20:51,579 [server.py:_initialize_component()] - Performing Component Post Init: [dbus_manager]
+2023-07-27 20:20:51,719 [server.py:_initialize_component()] - Performing Component Post Init: [file_manager]
+2023-07-27 20:20:52,511 [server.py:_initialize_component()] - Performing Component Post Init: [machine]
+2023-07-27 20:20:52,512 [machine.py:validation_init()] - Installation version in database up to date
+2023-07-27 20:20:52,669 [machine.py:initialize()] - Unable to acquire the systemd-logind D-Bus interface, falling back to CLI Reboot and Shutdown APIs. Unit dbus-org.freedesktop.login1.service is masked.
+2023-07-27 20:20:52,946 [machine.py:check_virt_status()] - No Virtualization Detected
+2023-07-27 20:20:52,974 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 20:20:52,980 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 20:20:53,101 [server.py:add_log_rollover_item()] - 
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['system.slice', 'sysinit.target', '-.mount', 'network-online.target']
+**After=['system.slice', 'basic.target', 'sysinit.target', 'systemd-journald.socket', '-.mount', 'network-online.target']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/dietpi/printer_data/systemd/moonraker.env
+**ExecStart=/home/dietpi/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=/home/dietpi/moonraker
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=dietpi
+2023-07-27 20:20:53,102 [server.py:_initialize_component()] - Performing Component Post Init: [proc_stats]
+2023-07-27 20:20:53,102 [server.py:_initialize_component()] - Performing Component Post Init: [announcements]
+2023-07-27 20:20:53,107 [server.py:_initialize_component()] - Performing Component Post Init: [webcam]
+2023-07-27 20:20:53,107 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 20:20:53,110 [server.py:_initialize_component()] - Performing Component Post Init: [klippy_connection]
+2023-07-27 20:20:53,112 [server.py:add_log_rollover_item()] - 
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['-.mount', 'sysinit.target', 'system.slice']
+**After=['systemd-journald.socket', 'network-online.target', 'basic.target', 'system.slice', 'sysinit.target', '-.mount']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/dietpi/printer_data/systemd/klipper.env
+**ExecStart=/home/dietpi/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/dietpi/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=dietpi
+2023-07-27 20:20:53,113 [server.py:_initialize_component()] - Performing Component Post Init: [authorization]
+2023-07-27 20:20:53,113 [server.py:_initialize_component()] - Performing Component Post Init: [update_manager]
+2023-07-27 20:20:53,424 [base_deploy.py:log_info()] - PackageDeploy: PackageKit Provider Configured
+2023-07-27 20:20:53,425 [base_deploy.py:log_info()] - Git Repo moonraker: Stored pip version: 23.0
+2023-07-27 20:20:53,969 [git_deploy.py:log_repo_info()] - Git Repo moonraker Detected:
+Owner: Arksine
+Repository Name: moonraker
+Path: /home/dietpi/moonraker
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Arksine/moonraker.git
+Recovery URL: https://github.com/Arksine/moonraker.git
+Current Commit SHA: fdc3e0eb0b61818c20e2f22150c01404b8f3932d
+Upstream Commit SHA: fdc3e0eb0b61818c20e2f22150c01404b8f3932d
+Current Version: v0.8.0-115-gfdc3e0e
+Upstream Version: v0.8.0-115
+Rollback Commit: fdc3e0eb0b61818c20e2f22150c01404b8f3932d
+Rollback Branch: master
+Rollback Version: v0.8.0-115-gfdc3e0e
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2023-07-27 20:20:54,522 [git_deploy.py:log_repo_info()] - Git Repo klipper Detected:
+Owner: Klipper3d
+Repository Name: klipper
+Path: /home/dietpi/klipper
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Klipper3d/klipper
+Recovery URL: https://github.com/Klipper3d/klipper
+Current Commit SHA: d725dfd309e3db2a7b26b9b452cfde6cb9272f34
+Upstream Commit SHA: d725dfd309e3db2a7b26b9b452cfde6cb9272f34
+Current Version: v0.11.0-248-gd725dfd3
+Upstream Version: v0.11.0-248
+Rollback Commit: d725dfd309e3db2a7b26b9b452cfde6cb9272f34
+Rollback Branch: master
+Rollback Version: v0.11.0-248-gd725dfd3
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2023-07-27 20:20:54,541 [extensions.py:start_unix_server()] - Creating Unix Domain Socket at '/home/dietpi/printer_data/comms/moonraker.sock'
+2023-07-27 20:20:54,544 [server.py:start_server()] - Starting Moonraker on (0.0.0.0, 7125), Hostname: DietPi
+2023-07-27 20:20:54,546 [app.py:listen()] - SSL Certificate/Key not configured, aborting HTTPS Server startup
+2023-07-27 20:20:54,801 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-07-27 20:20:54,927 [server.py:add_log_rollover_item()] - 
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['system.slice', 'sysinit.target', '-.mount']
+**After=['network-online.target', 'basic.target', 'system.slice', '-.mount', 'sysinit.target', 'systemd-journald.socket']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/dietpi/printer_data/systemd/klipper.env
+**ExecStart=/home/dietpi/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/dietpi/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=dietpi
+2023-07-27 20:20:55,184 [server.py:add_log_rollover_item()] - Klipper Version: v0.11.0-248-gd725dfd3
+2023-07-27 20:20:55,200 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/info
+2023-07-27 20:20:55,202 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.info
+2023-07-27 20:20:55,202 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/emergency_stop
+2023-07-27 20:20:55,204 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.emergency_stop
+2023-07-27 20:20:55,205 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/gcode/help
+2023-07-27 20:20:55,211 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.gcode.help
+2023-07-27 20:20:55,212 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/gcode/script
+2023-07-27 20:20:55,214 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.gcode.script
+2023-07-27 20:20:55,215 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/gcode/restart
+2023-07-27 20:20:55,216 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.gcode.restart
+2023-07-27 20:20:55,216 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/gcode/firmware_restart
+2023-07-27 20:20:55,225 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.gcode.firmware_restart
+2023-07-27 20:20:55,226 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/objects/list
+2023-07-27 20:20:55,227 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.objects.list
+2023-07-27 20:20:55,227 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/objects/query
+2023-07-27 20:20:55,228 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.objects.query
+2023-07-27 20:20:55,229 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/objects/subscribe
+2023-07-27 20:20:55,230 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.objects.subscribe
+2023-07-27 20:20:55,230 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/pause_resume/cancel
+2023-07-27 20:20:55,241 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.pause_resume.cancel
+2023-07-27 20:20:55,242 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/pause_resume/pause
+2023-07-27 20:20:55,243 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.pause_resume.pause
+2023-07-27 20:20:55,243 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/pause_resume/resume
+2023-07-27 20:20:55,244 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.pause_resume.resume
+2023-07-27 20:20:55,245 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/motion_report/dump_stepper
+2023-07-27 20:20:55,246 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.motion_report.dump_stepper
+2023-07-27 20:20:55,246 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/query_endstops/status
+2023-07-27 20:20:55,258 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.query_endstops.status
+2023-07-27 20:20:55,258 [app.py:register_remote_handler()] - Registering HTTP endpoint: (GET POST) /printer/motion_report/dump_trapq
+2023-07-27 20:20:55,261 [websockets.py:register_api_handler()] - Registering Websocket JSON-RPC methods: printer.motion_report.dump_trapq
+2023-07-27 20:20:55,269 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-07-27 20:20:55,275 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-07-27 20:20:55,521 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-07-27 20:20:55,787 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-07-27 20:20:56,272 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'temperature_sensor radxa', 'temperature_sensor mcu_temp', 'extruder']
+2023-07-27 20:21:06,741 [base_deploy.py:log_info()] - PackageKit: Detected 0 package updates:
+
+2023-07-27 20:21:06,742 [base_deploy.py:log_info()] - Git Repo moonraker: Next refresh in: 1 Day, 9 Hours, 12 Minutes, 33 Seconds
+2023-07-27 20:21:06,742 [base_deploy.py:log_info()] - Git Repo klipper: Next refresh in: 1 Day, 9 Hours, 12 Minutes, 30 Seconds
+2023-07-27 20:21:06,990 [web_deploy.py:_log_client_info()] - Web Client mainsail Detected:
+Repo: mainsail-crew/mainsail
+Channel: stable
+Path: /home/dietpi/mainsail
+Local Version: v2.6.0
+Remote Version: v2.6.1
+Valid: True
+Fallback Client Detected: True
+Pre-release: False
+Download Url: https://github.com/mainsail-crew/mainsail/releases/download/v2.6.1/mainsail.zip
+Download Size: 2110065
+Content Type: application/zip
+Rollback Version: v2.6.0
+Rollback Repo: mainsail-crew/mainsail
+2023-07-27 20:53:58,094 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 20:53:58,096 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 20:54:08,125 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 20:54:28,220 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 20:54:28,222 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236
+2023-07-27 21:15:10,999 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 21:15:11,000 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://127.0.0.1
+2023-07-27 21:15:21,010 [machine.py:_find_public_ip()] - Failed to detect local IP address
+2023-07-27 21:15:31,021 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.50.236
+2023-07-27 21:15:31,023 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.50.236

@@ -1,0 +1,19 @@
+#Systemd moonraker Service
+
+[Unit]
+Description=Moonraker provides Web API for klipper
+Documentation=https://moonraker.readthedocs.io/en/latest/
+After=network.target klipper.service
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Environment=MOONRAKER_CONFIG=/home/dietpi/klipper_config/moonraker.conf
+Environment=MOONRAKER_LOG=/home/dietpi/klipper_logs/moonraker.log
+Type=simple
+User=dietpi
+RemainAfterExit=yes
+ExecStart=/home/dietpi/moonraker-env/bin/python /home/dietpi/moonraker/moonraker/moonraker.py -c ${MOONRAKER_CONFIG} -l ${MOONRAKER_LOG}
+Restart=always
+RestartSec=10
